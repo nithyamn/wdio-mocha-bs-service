@@ -50,7 +50,7 @@ exports.config = {
     connectionRetryCount: 3,
 
     //Comment out the Services section and run the tests again for the hooks of this test to get reflected.
-    //services: ['browserstack'],
+    services: ['browserstack'],
     
     framework: 'mocha',
     mochaOpts: {
