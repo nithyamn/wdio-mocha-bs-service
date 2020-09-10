@@ -11,7 +11,7 @@ describe('E2E Test - Login', () => {
         $('#password').setValue('invalidPass')
         $('button[type = "submit"]').click()
         $('.flash.error').waitForExist()
-        assert.equal('Random text' , 'Google Search - BrowserStack');
+        //assert.equal('Random text' , 'Google Search - BrowserStack');
         //browser.saveScreenshot('./screenshots/theinternetapp_invalid_login_check.png')
     })
     
