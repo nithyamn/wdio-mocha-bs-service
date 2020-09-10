@@ -48,9 +48,9 @@ exports.config = {
 
     //services block
     
-    services:[
-        'browserstack'
-    ],
+//     services:[
+//         'browserstack'
+//     ],
 
     framework:'chai', 'mocha',
     mochaOpts: {
