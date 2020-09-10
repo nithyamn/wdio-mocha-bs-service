@@ -1,2 +1,0 @@
-# wdio-sample
-Screenshots folder.

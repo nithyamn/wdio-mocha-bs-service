@@ -7,8 +7,8 @@ exports.config = {
     protocol: 'http',
     path: '/wd/hub',
     
-    user: process.env.BROWSERSTACK_DEMO_USER,
-    key: process.env.BROWSERSTACK_DEMO_KEY,
+    user: process.env.BROWSERSTACK_USERNAME,
+    key: process.env.BROWSERSTACK_ACCESS_KEY,
     
     specs: [
         './test/specs/e2e-login.js'

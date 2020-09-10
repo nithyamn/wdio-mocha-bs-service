@@ -9,8 +9,8 @@ exports.config = {
     protocol: 'https',
     path: '/wd/hub',
     
-    user: process.env.BROWSERSTACK_DEMO_USER,
-    key: process.env.BROWSERSTACK_DEMO_KEY,
+    user: process.env.BROWSERSTACK_USERNAME,
+    key: process.env.BROWSERSTACK_ACCESS_KEY,
     
     specs: [
         './test/specs/local_env_check.js'
@@ -21,6 +21,8 @@ exports.config = {
     ],
     
     maxInstances: 10,
+
+    
     
     capabilities: [{
         'os': 'Windows',
@@ -28,7 +30,7 @@ exports.config = {
         'browser': 'Chrome',
         'browser_version': '81.0',
         'resolution': '1280x800',
-        'browserstack.local': true,
+        'browserstack.local': false,
 
         'project': 'WebdriverIO Samples',
         'build': 'Build v2'
@@ -44,9 +46,13 @@ exports.config = {
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
 
-    services: ['browserstack'],
+    //services block
     
-    framework: 'mocha',
+    services:[
+        'browserstack'
+    ],
+
+    framework:'chai', 'mocha',
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
