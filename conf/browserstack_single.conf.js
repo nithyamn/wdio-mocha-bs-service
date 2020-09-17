@@ -65,6 +65,15 @@ exports.config = {
     //     }
     // },
     reporters: [
+        'spec',
+        [
+          'allure',
+          {
+            outputDir: './tests/reports/allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false
+          }
+        ],
         [
           'junit',
           {
