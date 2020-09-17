@@ -66,6 +66,15 @@ exports.config = {
     // },
     reporters: [
         [
+          'junit',
+          {
+            outputDir: './tests/reports/junit',
+            outputFileFormat: function(options) {
+              return `junit-${options.capabilities.browserName}.${options.cid}.xml`;
+            }
+          }
+        ],
+        [
           'browserstack',
           {
             outputDir: './',
