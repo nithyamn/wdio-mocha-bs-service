@@ -1,5 +1,5 @@
 const sanityTests = [
-    //'./test/specs/e2e-login.js',
+    './test/specs/e2e-login.js',
     './test/specs/google.js'
 ];
 exports.config = {
@@ -128,7 +128,7 @@ exports.config = {
         })
 
         browser.executeScript('browserstack_executor: {"action": "setSessionName", "arguments": {"name": "Node test"}}');
-        
+
         //GET PUBLIC SESSION URL
         var request = require('request');
         opts = {
@@ -136,7 +136,8 @@ exports.config = {
         };
         request.get(opts, function (error, response, body) {
             var jsonData = JSON.parse(body);
-            console.log(jsonData["automation_session"]["public_url"]);
+
+            console.log("PUBLIC SESSION URL:"+jsonData["automation_session"]["public_url"]);
         });
         
     }
