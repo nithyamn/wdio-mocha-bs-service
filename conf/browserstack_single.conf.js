@@ -1,5 +1,5 @@
 const sanityTests = [
-    './test/specs/e2e-login.js',
+    //'./test/specs/e2e-login.js',
     './test/specs/google.js'
 ];
 exports.config = {
@@ -50,7 +50,6 @@ exports.config = {
     connectionRetryCount: 3,
 
     //Comment out the Services section and run the tests again for the hooks of this test to get reflected.
-    services: ['browserstack'],
     
     framework: 'mocha',
     mochaOpts: {
@@ -91,6 +90,8 @@ exports.config = {
         ]
     ],
 
+    services: ['browserstack', 'intercept'],
+
      beforeSession: function (config, capabilities, specs) {
         var path = specs[0];
         var testname = path.replace(/^.*[\\/]/, '').replace(/.js/, '');
@@ -99,6 +100,7 @@ exports.config = {
         //console.log("specs:"+testname);
         capabilities.name = testname;
         capabilities.project = projectname;
+
       },
 
     beforeTest: function (test, context, capabilities) {
@@ -108,9 +110,12 @@ exports.config = {
         console.log('--- Running test: ' + testName)
     },
 
-    afterTest: function (test,spec) {
+    afterTest: function (test,spec) {   
+
         var user = process.env.BROWSERSTACK_USERNAME;
         var key = process.env.BROWSERSTACK_ACCESS_KEY;
+        const sessionid = browser.sessionId;
+
         const filename =  spec[0];
         //const projectname = `test_${new Date().toLocaleDateString()}`;
         console.log("Username, Accesskey : "+user+" "+key);
@@ -122,7 +127,18 @@ exports.config = {
             method:"PUT", 
             form:{"status":"failed"}
         })
+
+        browser.executeScript('browserstack_executor: {"action": "setSessionName", "arguments": {"name": "Node test"}}');
+        
+        //GET PUBLIC SESSION URL
+        var request = require('request');
+        opts = {
+            url : "https://"+user+":"+key+"@api.browserstack.com/automate/sessions/"+sessionid+".json"
+        };
+        request.get(opts, function (error, response, body) {
+            var jsonData = JSON.parse(body);
+            console.log(jsonData["automation_session"]["public_url"]);
+        });
+        
     }
 }
-
-
