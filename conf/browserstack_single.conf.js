@@ -120,7 +120,6 @@ exports.config = {
         //const projectname = `test_${new Date().toLocaleDateString()}`;
         console.log("Username, Accesskey : "+user+" "+key);
         var request = require('request');
-        const sessionid = browser.sessionId;
         console.log("Session ID printed: "+sessionid);
         request({
             uri: "https://"+user+":"+key+"@api.browserstack.com/automate/sessions/"+sessionid+".json", 
