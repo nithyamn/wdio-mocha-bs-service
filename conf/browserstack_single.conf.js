@@ -130,7 +130,6 @@ exports.config = {
         browser.executeScript('browserstack_executor: {"action": "setSessionName", "arguments": {"name": "Node test"}}');
 
         //GET PUBLIC SESSION URL
-        var request = require('request');
         opts = {
             url : "https://"+user+":"+key+"@api.browserstack.com/automate/sessions/"+sessionid+".json"
         };
