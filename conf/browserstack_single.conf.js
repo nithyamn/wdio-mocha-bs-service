@@ -1,4 +1,5 @@
 var buildName = process.env.BROWSERSTACK_BUILD_NAME; 
+console.log(process.env.BROWSERSTACK_BUILD_NAME);
 const sanityTests = [
     './test/specs/e2e-login.js',
     './test/specs/google.js'
