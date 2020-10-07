@@ -1,3 +1,4 @@
+var buildName = process.env.BROWSERSTACK_BUILD_NAME; 
 const sanityTests = [
     './test/specs/e2e-login.js',
     './test/specs/google.js'
@@ -36,7 +37,7 @@ exports.config = {
         'resolution': '1280x800',
 
         'project': 'WebdriverIO Samples',
-        'build': 'Build v1'
+        'build': buildName
     }],
     
     logLevel: 'info',
